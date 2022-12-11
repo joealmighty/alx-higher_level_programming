@@ -1,0 +1,18 @@
+#!/bin/bash
+
+import os
+import compileall
+
+# Get the file name from the environment variable
+py_file = os.environ['PYFILE']
+
+# Compile the file
+compileall.compile_file(py_file, quiet=True)
+
+# Set the output filename
+output_filename = py_file + 'c'
+
+# Move the compiled file to the output filename
+os.rename(py_file + 'o', output_filename)
+
+print(f'Successfully compiled {py_file} to {output_filename}')
